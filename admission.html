@@ -4,9 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admission | Grace of Lord Infant School</title>
-   <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- CHANGED: Added Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
+
+<!-- CHANGED: Added mobile navigation toggle button -->
+<div class="mobile-nav-toggle" id="mobileNavToggle">
+    <i class="fas fa-bars"></i>
+</div>
+
 <header>
 <div class="logo-section">
 <div class="logo">
@@ -18,7 +26,7 @@
     <div class="school-tagline">INFANT SCHOOL KAMPALA</div>
 </div>
 </div>
-<nav>
+<nav id="mainNav">
 <ul>
     <li><a href="home.html">Home</a></li>
     <li><a href="academics.html">Academics</a></li>
@@ -27,17 +35,45 @@
 </ul>
 </nav> 
 </header>
+
     <div class="header-admission">
         <div class="header-content">
             <h1>Admission</h1>
             <p>Join the Grace family - Where Every Child Shines</p>
         </div>
     </div>
+
 <div class="container">
-<h2 class="section-title">Admission Information</h2>
+    <!-- CHANGED: Added sections for better organization -->
+    <h2 class="section-title">Admission Information</h2>
+    
+    <!-- CHANGED: Added key requirements cards -->
+    <div class="admission-requirements">
+        <div class="req-card">
+            <i class="fas fa-calendar-check"></i>
+            <h4>Step 1</h4>
+            <p>Visit our school or contact us for a tour</p>
+        </div>
+        <div class="req-card">
+            <i class="fas fa-edit"></i>
+            <h4>Step 2</h4>
+            <p>Fill out the admission form below</p>
+        </div>
+        <div class="req-card">
+            <i class="fas fa-file-upload"></i>
+            <h4>Step 3</h4>
+            <p>Submit required documents</p>
+        </div>
+        <div class="req-card">
+            <i class="fas fa-user-check"></i>
+            <h4>Step 4</h4>
+            <p>Attend assessment interview</p>
+        </div>
+    </div>
+
 <div class="admission-info">
 <p>
-    We welcome applications for Nursery, Lower Primary, and Upper Primary classes. Our admissions process is simple and transparent, ensuring every child has the opportunity to thrive in our caring and dynamic environment.
+    We welcome applications for Nursery, Baby Class, Middle Class, and Primary classes (P1-P7). Our admissions process is simple and transparent, ensuring every child has the opportunity to thrive in our caring and dynamic environment.
 </p>
 <ul style="margin: 1em 0 0 1.2em; color: #2a5298;">
     <li>Visit our school or contact us for a tour.</li>
@@ -47,38 +83,142 @@
     <li>Receive admission decision and join our family!</li>
 </ul>
 </div>
-<form class="admission-form">
-    <h2 class="section-title" style="font-size:1.2rem; margin-bottom:1rem;">Quick Application Form</h2>
-    <label for="child-name">Child's Full Name</label>
-    <input type="text" id="child-name" name="child-name" required>
 
-    <label for="dob">Date of Birth</label>
-    <input type="date" id="dob" name="dob" required>
+<!-- CHANGED: Enhanced form with more fields -->
+<form class="admission-form" id="admissionForm">
+    <h2 class="section-title" style="font-size:1.2rem; margin-bottom:1rem;">Application Form</h2>
+    
+    <!-- CHANGED: Added form sections with fieldset -->
+    <fieldset class="form-section">
+        <legend><i class="fas fa-child"></i> Child's Information</legend>
+        
+        <label for="child-name">Child's Full Name *</label>
+        <input type="text" id="child-name" name="child-name" required placeholder="Enter child's full name">
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="dob">Date of Birth *</label>
+                <input type="date" id="dob" name="dob" required>
+                <!-- CHANGED: Added age display -->
+                <small class="age-display" id="ageDisplay"></small>
+            </div>
+            
+            <!-- NEW FIELD: Gender Selection -->
+            <div class="form-group">
+                <label for="gender">Gender *</label>
+                <select id="gender" name="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+        </div>
 
-    <label for="class">Class Applying For</label>
-    <select id="class" name="class" required>
-        <option value="">Select Class</option>
-        <option value="nursery">Nursery</option>
-        <option value="lower-primary">Lower Primary</option>
-        <option value="upper-primary">Upper Primary</option>
-    </select>
+        <!-- NEW FIELD: Expanded Class Options -->
+        <label for="class">Class Applying For *</label>
+        <select id="class" name="class" required>
+            <option value="">Select Class</option>
+            <optgroup label="Nursery Section">
+                <option value="baby-class">Baby Class</option>
+                <option value="middle-class">Middle Class</option>
+                <option value="nursery">Nursery</option>
+            </optgroup>
+            <optgroup label="Primary Section">
+                <option value="p1">Primary One (P1)</option>
+                <option value="p2">Primary Two (P2)</option>
+                <option value="p3">Primary Three (P3)</option>
+                <option value="p4">Primary Four (P4)</option>
+                <option value="p5">Primary Five (P5)</option>
+                <option value="p6">Primary Six (P6)</option>
+                <option value="p7">Primary Seven (P7)</option>
+            </optgroup>
+        </select>
 
-    <label for="parent-name">Parent/Guardian Name</label>
-    <input type="text" id="parent-name" name="parent-name" required>
+        <!-- NEW FIELD: Previous School -->
+        <label for="previous-school">Previous School (if transferring)</label>
+        <input type="text" id="previous-school" name="previous-school" placeholder="Name of previous school">
+    </fieldset>
 
-    <label for="contact">Contact Number</label>
-    <input type="tel" id="contact" name="contact" required>
+    <fieldset class="form-section">
+        <legend><i class="fas fa-heartbeat"></i> Health Information</legend>
+        
+        <!-- NEW FIELD: Health Information -->
+        <label for="allergies">Allergies or Medical Conditions</label>
+        <input type="text" id="allergies" name="allergies" placeholder="List any allergies or medical conditions">
+        
+        <label for="medical-notes">Additional Medical Notes</label>
+        <textarea id="medical-notes" name="medical-notes" rows="2" placeholder="Any other health information we should know"></textarea>
+    </fieldset>
 
-    <label for="message">Additional Message (optional)</label>
-    <textarea id="message" name="message" rows="3"></textarea>
+    <fieldset class="form-section">
+        <legend><i class="fas fa-user"></i> Parent/Guardian Information</legend>
+        
+        <label for="parent-name">Parent/Guardian Name *</label>
+        <input type="text" id="parent-name" name="parent-name" required placeholder="Enter parent/guardian name">
+        
+        <!-- NEW FIELD: Parent Email -->
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" required placeholder="your@email.com">
+        
+        <label for="contact">Contact Number *</label>
+        <input type="tel" id="contact" name="contact" required placeholder="+256-XXX-XXXXXX">
+        
+        <!-- NEW FIELD: Emergency Contact -->
+        <label for="emergency-contact">Emergency Contact *</label>
+        <input type="tel" id="emergency-contact" name="emergency-contact" required placeholder="Alternative contact number">
+        
+        <label for="occupation">Parent's Occupation</label>
+        <input type="text" id="occupation" name="occupation" placeholder="Parent's occupation">
+    </fieldset>
 
-    <button type="submit">Submit Application</button>
+    <fieldset class="form-section">
+        <legend><i class="fas fa-file-alt"></i> Additional Information</legend>
+        
+        <!-- NEW FIELD: Document Upload Areas -->
+        <div class="upload-section">
+            <label>Upload Documents (Birth Certificate & Photo)</label>
+            <div class="file-upload-container">
+                <div class="file-upload-box">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Birth Certificate</p>
+                    <input type="file" id="birth-cert" name="birth-cert" accept=".jpg,.jpeg,.png,.pdf">
+                </div>
+                <div class="file-upload-box">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Passport Photo</p>
+                    <input type="file" id="passport-photo" name="passport-photo" accept=".jpg,.jpeg,.png">
+                </div>
+            </div>
+        </div>
+        
+        <label for="message">Additional Message (optional)</label>
+        <textarea id="message" name="message" rows="3" placeholder="Any additional information you'd like to share"></textarea>
+    </fieldset>
+
+    <!-- CHANGED: Added consent checkbox -->
+    <div class="form-consent">
+        <input type="checkbox" id="consent" name="consent" required>
+        <label for="consent">I confirm that all information provided is accurate and I agree to the school's admission terms and conditions.</label>
+    </div>
+
+    <button type="submit" id="submitBtn">Submit Application</button>
 </form>
+
+<!-- CHANGED: Added success message container -->
+<div class="success-message" id="successMessage">
+    <div class="success-content">
+        <i class="fas fa-check-circle"></i>
+        <h3>Application Submitted Successfully!</h3>
+        <p>Thank you for applying to Grace of Lord Infant School. We will review your application and contact you soon.</p>
+        <button onclick="closeSuccessMessage()">Close</button>
+    </div>
+</div>
+
 </div>
 
 <footer class="school-footer">
 <div class="school-info">
-<img src="../assets/images/school logo.png">
+<img src="assets/images/school logo.png">
 <div class="text">
 <h>Grace of Lord Infant School</h>
 <p>We Trust in Gods Will and Wisdom</p>
@@ -89,40 +229,45 @@
 <div class="footer-links">
 <h4>quick Links</h4>
 <ul>
-    <li><a href="home.html"home>Home</a></li>
-    <li><a href="about us.html"home>About us</a></li>
-    <li><a href="academics.html"academics>Academics</a></li>
-    <li><a href="admission.html"admission>Admission</a></li>
-    <li><a href="gallery.html"gallery>Gallery</a></li>
+    <li><a href="home.html">Home</a></li>
+    <li><a href="academics.html">Academics</a></li>
+    <li><a href="admission.html">Admission</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="contactus.html">Contact Us</a></li>
 </ul>
 </div>
      
 <div class="contact-info">
-<h4>content </h4>
-<p> 📍kisenyi, kampala, uganda</p> 
+<h4>Contact </h4>
+<p> 📍Kisenyi, Kampala, Uganda</p> 
 <p> 📞0764171212</p>
 <p> 📧 info@gracelordschool.org</p>
 </div>
 <div class="resources">
-<h3>parents resources</h3>
-<p>Portal Longin</p>
+<h4>Parents Resources</h4>
+<p>Portal Login</p>
 <p>Newsletters</p>
-<p>School policies</p>
+<p>School Policies</p>
 </div>
 
 <div class="social-media">
-<h2>follow<h2>
-<img class="media-logo" src="../assets/images/x logo.png" width="35px">
-<img class="media-logo" src="../assets/images/tik tok logo.png" width="37px">
-<img class="media-logo" src="../assets/images/you tube logo.png" width="37px">
-<img class="media-logo" src="../assets/images/instagram logo.png" width="37px">
-<img class="media-logo" src="../assets/images/whats app logo.png" width="37px">
-<img class="media-logo" src="../assets/images/face book logo.png" width="37px">
+<h4>Follow Us</h4>
+<div class="social-icons">
+<img class="media-logo" src="assets/images/x logo.png" width="35px" alt="X">
+<img class="media-logo" src="assets/images/tik tok logo.png" width="37px" alt="TikTok">
+<img class="media-logo" src="assets/images/you tube logo.png" width="37px" alt="YouTube">
+<img class="media-logo" src="assets/images/instagram logo.png" width="37px" alt="Instagram">
+<img class="media-logo" src="assets/images/whats app logo.png" width="37px" alt="WhatsApp">
+<img class="media-logo" src="assets/images/face book logo.png" width="37px" alt="Facebook">
+</div>
 </div>
 </div>
 <div class="copyright">     
-  <p> &copy; 2025 grace of lord junior school. all rights reserved</p> 
+  <p> &copy; 2026 Grace of Lord Infant School. All rights reserved</p> 
 </div>  
 </footer>
+
+<!-- CHANGED: Added script reference -->
+<script src="script.js"></script>
 </body>
 </html>
