@@ -708,7 +708,747 @@ margin-left: 30px;
             box-shadow: 0 2px 8px rgba(42,82,152,0.12);
             transition: 'background' 0.3s, transform 0.2s;
         }
-        .admission-form button:hover {
-            background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);
-            transform: translateY(-3px) scale(1.04);
-        }
+.admission-form button:hover {
+    background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);
+    transform: translateY(-3px) scale(1.04);
+}
+
+/* ============================================
+   CHANGED: Responsive Design - Mobile First
+   ============================================ */
+
+/* Mobile Navigation Toggle Button - Hidden by default on desktop */
+.mobile-nav-toggle {
+    display: none;
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 1000;
+    background: #0171f9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* Form Styles Enhancement */
+.form-section {
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    background: #fafafa;
+}
+
+.form-section legend {
+    font-weight: bold;
+    color: #2a5298;
+    padding: 0 10px;
+    font-size: 1.1rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.age-display {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.85rem;
+}
+
+/* Valid/Invalid field styles */
+input.valid, select.valid, textarea.valid {
+    border-color: #28a745 !important;
+    background-color: #f8fff8 !important;
+}
+
+input.invalid, select.invalid, textarea.invalid {
+    border-color: #dc3545 !important;
+    background-color: #fff8f8 !important;
+}
+
+/* Admission Requirements Cards */
+.admission-requirements {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 2rem;
+}
+
+.req-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.5rem 1rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.req-card:hover {
+    transform: translateY(-5px);
+}
+
+.req-card i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.req-card h4 {
+    margin: 10px 0 5px;
+    font-size: 1rem;
+}
+
+.req-card p {
+    margin: 0;
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+/* File Upload Styles */
+.upload-section {
+    margin: 1rem 0;
+}
+
+.file-upload-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.file-upload-box {
+    flex: 1;
+    border: 2px dashed #2a5298;
+    border-radius: 10px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.file-upload-box:hover {
+    background: #f0f4ff;
+    border-color: #1e3c72;
+}
+
+.file-upload-box i {
+    font-size: 2rem;
+    color: #2a5298;
+    margin-bottom: 10px;
+}
+
+.file-upload-box p {
+    margin: 0;
+    color: #2a5298;
+    font-weight: 500;
+}
+
+.file-upload-box input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Form Consent */
+.form-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 1.5rem 0;
+}
+
+.form-consent input[type="checkbox"] {
+    margin-top: 3px;
+    width: 18px;
+    height: 18px;
+}
+
+.form-consent label {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Success Message Modal */
+.success-message {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.success-message.show {
+    display: flex;
+}
+
+.success-content {
+    background: white;
+    padding: 3rem 2rem;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 450px;
+    margin: 1rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.success-content i {
+    font-size: 4rem;
+    color: #28a745;
+    margin-bottom: 1rem;
+}
+
+.success-content h3 {
+    color: #2a5298;
+    margin-bottom: 1rem;
+}
+
+.success-content p {
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.success-content button {
+    background: #2a5298;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.success-content button:hover {
+    background: #1e3c72;
+    transform: scale(1.05);
+}
+
+/* ============================================
+   CHANGED: Media Queries for Responsive Design
+   ============================================ */
+
+/* Tablet and below (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .container, .container1, .container2 {
+        max-width: 90%;
+        padding: 20px 15px;
+    }
+    
+    .footer-Container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .academics-grid1, .academics-grid2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .mission-vision > div {
+        max-width: 45%;
+    }
+    
+    .admission-requirements {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Large mobile devices (max-width: 768px) */
+@media (max-width: 768px) {
+    /* Mobile Navigation */
+    .mobile-nav-toggle {
+        display: block;
+    }
+    
+    nav {
+        position: relative;
+    }
+    
+    nav ul {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #0171f9;
+        flex-direction: column;
+        display: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        z-index: 999;
+    }
+    
+    nav.active ul {
+        display: flex;
+    }
+    
+    nav li {
+        margin: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        width: 100%;
+    }
+    
+    nav a {
+        padding: 15px 20px;
+        color: white;
+        font-size: 1.1rem;
+        display: block;
+    }
+    
+    nav a:hover {
+        background: rgba(255,255,255,0.1);
+        color: white;
+    }
+    
+    /* Header adjustments */
+    header {
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+    
+    .logo-section {
+        margin-left: 10px;
+    }
+    
+    .logo {
+        width: 50px;
+    }
+    
+    .school-name {
+        font-size: 1.5rem;
+    }
+    
+    .school-tagline {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+    
+    /* Hero/Header sections */
+    .header-bg, .header-contact, .header-admission, .header-academics {
+        height: 300px;
+    }
+    
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .header-content p {
+        font-size: 1rem;
+    }
+    
+    /* Container adjustments */
+    .container, .container1, .container2 {
+        max-width: 95%;
+        margin: 1.5rem auto;
+        padding: 1.5rem 1rem;
+    }
+    
+    /* Section titles */
+    .section-title {
+        font-size: 1.4rem;
+    }
+    
+    /* Mission vision - stack vertically */
+    .mission-vision {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .mission-vision > div {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    /* Highlights grid */
+    .highlights {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .highlight-box {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    /* Testimonials */
+    .testimonial-list {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .testimonial {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    /* Flyer section */
+    .flyer {
+        flex-direction: column;
+        width: 95%;
+        margin-left: 2.5%;
+    }
+    
+    .left, .right {
+        width: 100%;
+        padding: 20px;
+    }
+    
+    .left {
+        padding-top: 30px;
+    }
+    
+    /* Academics grid */
+    .academics-grid1, .academics-grid2 {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Gallery grid */
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .gallery-item img {
+        height: 150px;
+    }
+    
+    /* Footer */
+    .footer-Container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .school-info {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .school-info img {
+        width: 30%;
+        margin-left: 35%;
+        margin-top: 0;
+    }
+    
+    .text {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    
+    .social-icons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    /* Admission requirements */
+    .admission-requirements {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Form styles */
+    .form-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .form-section {
+        padding: 1rem;
+    }
+    
+    .file-upload-container {
+        flex-direction: column;
+    }
+    
+    .admission-form button {
+        width: 100%;
+        padding: 1rem;
+    }
+    
+    /* Contact form */
+    .contact-form button {
+        width: 100%;
+    }
+    
+    /* CTA section */
+    .cta {
+        padding: 25px 15px;
+    }
+    
+    .cta h2 {
+        font-size: 1.5rem;
+    }
+    
+    .cta img {
+        max-width: 80%;
+        margin: 15px 0;
+    }
+    
+    .cta a {
+        display: block;
+        text-align: center;
+    }
+}
+
+/* Small mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+    /* Even smaller header elements */
+    .school-name {
+        font-size: 1.2rem;
+    }
+    
+    .logo {
+        width: 40px;
+    }
+    
+    .logo-section {
+        margin-left: 5px;
+    }
+    
+    /* Hero sections */
+    .header-bg, .header-contact, .header-admission, .header-academics {
+        height: 250px;
+    }
+    
+    .header-content h1 {
+        font-size: 1.4rem;
+        padding: 0 10px;
+    }
+    
+    .header-content p {
+        font-size: 0.9rem;
+    }
+    
+    /* Buttons */
+    .btn, .cta a {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    /* Container */
+    .container, .container1, .container2 {
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+    
+    /* Forms */
+    .admission-form input,
+    .admission-form select,
+    .admission-form textarea {
+        padding: 0.6rem;
+        font-size: 0.95rem;
+    }
+    
+    /* Gallery */
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .gallery-head {
+        margin-left: 0;
+        text-align: center;
+    }
+    
+    .gallery-head h1 {
+        font-size: 1.8rem;
+    }
+    
+    /* Footer */
+    .media-logo {
+        width: 30px !important;
+    }
+    
+    .copyright p {
+        font-size: 0.75rem;
+    }
+    
+    /* Success message */
+    .success-content {
+        padding: 2rem 1.5rem;
+    }
+    
+    .success-content i {
+        font-size: 3rem;
+    }
+    
+    .success-content h3 {
+        font-size: 1.3rem;
+    }
+    
+    /* Contact location */
+    .contact-location {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .location {
+        margin-top: 0;
+    }
+}
+
+/* Extra small devices (max-width: 320px) */
+@media (max-width: 320px) {
+    .school-name {
+        font-size: 1rem;
+    }
+    
+    .school-tagline {
+        font-size: 8px;
+    }
+    
+    .header-content h1 {
+        font-size: 1.2rem;
+    }
+    
+    .section-title {
+        font-size: 1.2rem;
+    }
+}
+
+/* Landscape orientation adjustments */
+@media (orientation: landscape) and (max-height: 500px) {
+    .header-bg, .header-contact, .header-admission, .header-academics {
+        height: 200px;
+    }
+    
+    .header-content h1 {
+        font-size: 1.3rem;
+    }
+    
+    .mobile-nav-toggle {
+        top: 5px;
+        padding: 8px 12px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Print styles */
+@media print {
+    .mobile-nav-toggle,
+    .success-message,
+    .btn,
+    nav {
+        display: none !important;
+    }
+    
+    body {
+        font-size: 12pt;
+    }
+    
+}
+
+/* ============================================
+   CHANGED: Scroll Animation Styles
+   ============================================ */
+
+/* Initial state - hidden before animation */
+[data-animate],
+.mission-vision > div,
+.highlight-box,
+.testimonial,
+.academic-card,
+.gallery-item,
+.req-card {
+opacity: 0;
+transform: translateY(30px);
+transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* When element is animated (triggered by JavaScript) */
+[data-animate].animated,
+.mission-vision > div.animated ,
+.highlight-box.animated ,
+.testimonial.animated ,
+.academic-card.animated ,
+.gallery-item.animated ,
+.req-card.opacity-1; /* Fallback for auto-assigned animations */
+
+.opacity-1 { /* This was incorrectly formatted - let me fix it properly in next edit */ }
+
+/* Animation Types */
+
+/* Fade Up (default) */
+.animate-fade-up {
+opacity: 1 !important;
+transform: translateY(0) !important;
+
+/* Fade Down */
+.animate-fade-down {
+opacity: 1 !important; 
+transform: translateY(-30px) translateY(0) !important;
+
+/* Fade Left */
+.animate-fade-left { 
+opacity :1! important;  
+transform :translateX(-30px )translateX (0)! important;
+
+/ *Fade Right*/  
+.an imate-fade-right{   
+o pa city :l!important ;   
+t ransform :translateX(30 px )!impor tant;
+
+/ *Zoom In*/     
+.an imate-zoom-in{       
+op acity:l!important ;      
+t ransform :scale(0 ,8 )scale(l)!impor tant;
+
+ /*Zoom Out*/       
+.a nima te-zoom-out{        
+o pacity:l!important ;         
+tr ansform :scale(l.l )scale(l)!importa nt;
+
+/ *Slide Up Long*/          
+.a nima te-slide-up{           
+op acity:l! importan t;            
+tra nsform :translateY(60 px)!importa nt;
+
+ /*Bounce In*/              
+.a nima te-bounce-in{           
+opa city:l! importan t;             
+trans form scale (O.S):sc ale(l);animation-timing-function:cubic-bezier(O.l68,-O.S5 ,O S65 ,l.SS); 
+
+/*Staggered Delays for Grid Items*/
+.mission-vision>div:nth-child(l){transition-delay:O.ls;}
+.m ission-vision>div:nth-child(2){transition-delay:O.Zs;}
+.m ission-vision>div:nth-child(J){transition-delay:O.JS;}
+.hig hlight-box:nth-child(l){transition-delay:O.ls;}
+.hig hlight-box:nth-child(Z){ transition-dela y:O.ZS;} 
+.high light-box:nth-chil d(J): transition-dela y O.JS}
+.hi ghlight-box:nth-c hild(A): transition-dela y OA s}
+
+.t estimonial:n th-child(l), transi tion-del ay O.Is}
+.t estimonial:n th-chil d(Z), transi tion-del ay O.Z s} 
+.t estimonial:n th-chil d(J), transi tion-del ay O.J s}
+
+.g allery-item nth-c hil d(l). tr ansition-de lay.Ols}  
+.g allery-item nth-c hil d(Z). tr ansition-de lay.OZs}  
+.g allery-item nth-c hil d(J). tr ansition-de lay.OJs}  
+.g allery-item nth-c hild(A). tr ansition-de lay OA s}
+
+.ac ademic-card.nth-ch il d(I}.transit ion-delay-Ols}
+.ac ademic-card.nth-ch ild(Z}.transit ion-delay-OZs}
+.ac ademic-card.nth-ch ild(J}.transit ion-delay-OJs}
+
+/Parallax Effect Base*/
+.header-bg,.header-contact,.header-admission,.header-academics{
+will-change:bg round-position-y;
+
