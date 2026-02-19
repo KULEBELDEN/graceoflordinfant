@@ -1,6 +1,5 @@
 /**
  * Grace of Lord Infant School - Dynamic JavaScript
- * CHANGED: Added comprehensive interactive features
  */
 
 // ============================================
@@ -264,4 +263,113 @@ if (contactForm) {
     });
 }
 
+// ============================================
+// CHANGED: Scroll Animation System
+// ============================================
+
+// Initialize scroll animations when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    initScrollAnimations();
+});
+
+function initScrollAnimations() {
+    // Create intersection observer for scroll animations
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1 // Trigger when 10% of element is visible
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add animation class based on data attribute
+                const animationType = entry.target.getAttribute('data-animation') || 'fade-up';
+                entry.target.classList.add('animate-' + animationType);
+                entry.target.classList.add('animated'); // Mark as animated
+                
+                // Stop observing after animation is triggered
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Select all elements with data-animate attribute
+    const animatedElements = document.querySelectorAll('[data-animate]');
+    animatedElements.forEach(el => {
+        observer.observe(el);
+    });
+
+    // Also observe sections and cards that should animate
+    const sections = document.querySelectorAll('section, .mission-vision > div, .highlight-box, .testimonial, .academic-card, .gallery-item, .req-card');
+    sections.forEach(el => {
+        if (!el.hasAttribute('data-animate')) {
+            el.setAttribute('data-animate', 'fade-up');
+            observer.observe(el);
+        }
+    });
+}
+
+// Smooth scroll to element
+function scrollToElement(elementId) {
+    const element = document.getElementById(elementId);
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+// Add scroll-based parallax effect to hero sections (optional enhancement)
+function initParallax() {
+    const heroSections = document.querySelectorAll('.header-bg, .header-contact, .header-admission, .header-academics');
+    
+    if (heroSections.length > 0) {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            heroSections.forEach(section => {
+                const speed = 0.3;
+                section.style.backgroundPositionY = (scrolled * speed) + 'px';
+            });
+        });
+    }
+}
+
+// Add number counter animation for stats (if needed)
+function animateCounters() {
+    const counters = document.querySelectorAll('[data-count]');
+    
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = parseInt(counter.getAttribute('data-count'));
+                const duration = 2000; // 2 seconds
+                const step = target / (duration / 16); // 60fps
+                let current = 0;
+                
+                const updateCounter = () => {
+                    current += step;
+                    if (current < target) {
+                        counter.textContent = Math.floor(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                
+                updateCounter();
+                counterObserver.unobserve(counter);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    counters.forEach(counter => counterObserver.observe(counter));
+}
+
+// Initialize parallax if enabled
+initParallax();
+
+// Initialize counters if they exist
+animateCounters();
+
 console.log('Grace of Lord Infant School - JavaScript Loaded Successfully!');
+console.log('Scroll animations initialized!');
